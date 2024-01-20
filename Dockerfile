@@ -1,6 +1,5 @@
 FROM python:3.11-slim
 
-EXPOSE 8501
 
 RUN apt-get update && apt-get install -y \
     build-essential \
