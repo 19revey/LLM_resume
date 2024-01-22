@@ -35,19 +35,18 @@ if uploaded_file is not None:
     st.write("PDF Uploaded Successfully")
 
 
-
 submit = st.button("Generate results")
 
 
 input_prompt1 = """
-You are an skilled ATS (Applicant Tracking System) scanner with a deep understanding of data science and ATS functionality, 
+You are an skilled Applicant Tracking System scanner with a deep understanding of Applicant Tracking System functionality, 
 your task is to evaluate the resume against the provided job description. give me the percentage of match if the resume matches
 the job description. First the output should come as percentage and then highlight keywords in the job description that miss in the resume.
 """
 
 
 input_prompt2 = """
-You are the applicant who applied for this job and want to compose a strong coverletter to convince the employer you have the skills and the expereince for this job.
+You are the applicant who applied for this job and want to compose a strong but concise coverletter to convince the employer you have the skills and the expereince for this job.
 The first paragraph of the  cover letter must briefly discuss the your backgroud. 
 The second paragraph discuss how the applicant fit this role based on your skillsets matches the job requirements.
 The third paragraph discuss the your interest in this role and thanks for the consideration .
