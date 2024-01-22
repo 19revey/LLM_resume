@@ -9,9 +9,15 @@ from PIL import Image
 import pdf2image
 import google.generativeai as genai
 
+<<<<<<< HEAD
 from config import GOOGLE_API_KEY
 
 genai.configure(api_key=GOOGLE_API_KEY)
+=======
+# from config import GOOGLE_API_KEY
+
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+>>>>>>> 200ac25a6d0dc4da1df6bfce19cccf1d03d4f8f3
 
 def get_gemini_response(input,pdf_cotent,prompt):
     model=genai.GenerativeModel('gemini-pro-vision')
@@ -52,6 +58,7 @@ if uploaded_file is not None:
     st.write("PDF Uploaded Successfully")
 
 
+<<<<<<< HEAD
 # submit1 = st.button("Write a cover letter")
 
 # submit3 = st.button("Percentage match")
@@ -65,10 +72,24 @@ input_prompt1 = """
  Highlight the strengths and weaknesses of the applicant in relation to the specified job requirements.
 """
 #   Please share your professional evaluation on whether the candidate's profile aligns with the role.
+=======
+submit1 = st.button("Tell Me About the Resume")
+
+#submit2 = st.button("How Can I Improvise my Skills")
+
+submit3 = st.button("Percentage match")
+
+input_prompt1 = """
+ You are an experienced Technical Human Resource Manager,your task is to review the provided resume against the job description. 
+  Please share your professional evaluation on whether the candidate's profile aligns with the role. 
+ Highlight the strengths and weaknesses of the applicant in relation to the specified job requirements.
+"""
+>>>>>>> 200ac25a6d0dc4da1df6bfce19cccf1d03d4f8f3
 
 input_prompt3 = """
 You are an skilled ATS (Applicant Tracking System) scanner with a deep understanding of data science and ATS functionality, 
 your task is to evaluate the resume against the provided job description. give me the percentage of match if the resume matches
+<<<<<<< HEAD
 the job description. First the output should come as percentage and then highlight keywords in the job description that miss in the resume.
 """
 
@@ -105,6 +126,30 @@ if submit:
     else:
         st.write("Please uplaod the resume")
 
+=======
+the job description. First the output should come as percentage and then keywords missing and last final thoughts.
+"""
+
+if submit1:
+    if uploaded_file is not None:
+        pdf_content=input_pdf_setup(uploaded_file)
+        response=get_gemini_response(input_prompt1,pdf_content,input_text)
+        st.subheader("The Repsonse is")
+        st.write(response)
+    else:
+        st.write("Please uplaod the resume")
+
+elif submit3:
+    if uploaded_file is not None:
+        pdf_content=input_pdf_setup(uploaded_file)
+        response=get_gemini_response(input_prompt3,pdf_content,input_text)
+        st.subheader("The Repsonse is")
+        st.write(response)
+    else:
+        st.write("Please uplaod the resume")
+
+
+>>>>>>> 200ac25a6d0dc4da1df6bfce19cccf1d03d4f8f3
 
    
 
