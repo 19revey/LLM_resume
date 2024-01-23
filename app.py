@@ -40,10 +40,12 @@ submit = st.button("Generate results")
 
 input_prompt1 = """
 You are an skilled Applicant Tracking System scanner with a deep understanding of Applicant Tracking System functionality, 
-your task is to evaluate the resume against the provided job description. give me the percentage of match if the resume matches
-the job description. First the output should come as percentage and then highlight keywords in the job description that miss in the resume.
+your task is to evaluate the resume against the provided job description. 
+First, show  a single percentage reflecting the overall match between resume and job description. 
+Second, highlight the most critical key skills in the job description and assess how much the resume has shown these skills in the resume.
+Third, key skills missing: show keywords in the job description that miss in the resume.
 """
-
+#give me the percentage of match if the resume matches the job description.  First the output should come as percentage and then highlight keywords in the job description that miss in the resume.
 
 input_prompt2 = """
 You are the applicant who applied for this job and want to compose a strong but concise coverletter to convince the employer you have the skills and the expereince for this job.
