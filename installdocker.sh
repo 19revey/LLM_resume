@@ -13,3 +13,4 @@ sudo sh get-docker.sh -y
 sudo usermod -aG docker ubuntu 
 
 newgrp docker
+ 
