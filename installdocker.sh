@@ -2,14 +2,14 @@
 
 sudo apt-get update -y
 
-sudo apt-get upgrade
+sudo apt-get upgrade -y
 
 #required
 
 curl -fsSL https://get.docker.com -o get-docker.sh
 
-sudo sh get-docker.sh
+sudo sh get-docker.sh -y
 
-sudo usermod -aG docker ubuntu
+sudo usermod -aG docker ubuntu 
 
 newgrp docker
