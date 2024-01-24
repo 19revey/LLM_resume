@@ -30,7 +30,7 @@ def input_pdf_text(uploaded_file):
 
 
 st.title("Improve your resume using LLM")
-st.text("powered by Gemini pro, last updated 2024-01-24 12:18")
+st.text("powered by Gemini pro, last updated on 2024-01-24")
 
 st.text("Enhance your resume by including the skills  mentioned \n in the job description that are currently absent in your resume.")
 
