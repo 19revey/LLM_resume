@@ -4,6 +4,7 @@ import os
 import PyPDF2 as pdf
 from dotenv import load_dotenv
 import json
+from datetime import datetime
 
 load_dotenv()
 
@@ -28,8 +29,10 @@ def input_pdf_text(uploaded_file):
 
 ## Streamlit App
 
+current_time = datetime.now().strftime("%H:%M:%S")
+
 st.title("Improve your resume using LLM")
-st.text("powered by Gemini pro")
+st.text(f"powered by Gemini pro, last updated {current_time}")
 jd=st.text_area("Paste the Job Description")
 uploaded_file=st.file_uploader("Upload Your Resume",type="pdf",help="Please uplaod the pdf")
 
@@ -44,13 +47,30 @@ submit = st.button("Generate results")
 input_prompt1 = """
 You are an skilled Applicant Tracking System scanner with a deep understanding of Applicant Tracking System functionality, 
 your task is to evaluate the resume against the provided job description. 
-First, show  a single percentage reflecting the overall match between resume and job description. 
-Second, highlight the most critical key skills in the job description and assess how much the resume has shown these skills in the resume.
-Third, key skills missing: show keywords in the job description that miss in the resume.
+Show  a single percentage reflecting the overall match between resume and job description. 
 """
-#give me the percentage of match if the resume matches the job description.  First the output should come as percentage and then highlight keywords in the job description that miss in the resume.
 
 input_prompt2 = """
+You are an skilled Applicant Tracking System scanner with a deep understanding of Applicant Tracking System functionality, 
+your task is to evaluate the resume against the provided job description. 
+Find out the skills the make this resume qualified for this job, the shown skills  should exist in the job description.
+"""
+
+# input_prompt3 = """
+# You are an skilled Applicant Tracking System scanner with a deep understanding of Applicant Tracking System functionality, 
+# your task is to evaluate the resume against the provided job description. 
+# You must list keywords in the job description that are relevant to skills in the job description.
+# """
+
+input_prompt4 = """
+You are an skilled Applicant Tracking System scanner with a deep understanding of Applicant Tracking System functionality, 
+your task is to evaluate the resume against the provided job description. 
+You must list most critical keywords in the job description that miss in the resume.
+"""
+
+#give me the percentage of match if the resume matches the job description.  First the output should come as percentage and then highlight keywords in the job description that miss in the resume.
+
+input_prompt5 = """
 You are the applicant who applied for this job and want to compose a strong but concise coverletter to convince the employer you have the skills and the expereince for this job.
 The first paragraph of the  cover letter must briefly discuss the your backgroud. 
 The second paragraph discuss how the applicant fit this role based on your skillsets matches the job requirements.
@@ -63,9 +83,22 @@ if submit:
         text=input_pdf_text(uploaded_file)
 
         response=get_gemini_response(input_prompt1,text,jd)
+        st.subheader("percentage match")
         st.write(response)
 
         response=get_gemini_response(input_prompt2,text,jd)
+        st.subheader("skills needed")
+        st.write(response)
+
+        # response=get_gemini_response(input_prompt3,text,jd)
+        # st.subheader("Skills should be highlighted")
+        # st.write(response)
+
+        response=get_gemini_response(input_prompt4,text,jd)
+        st.subheader("Missing Keywords")
+        st.write(response)
+    
+        response=get_gemini_response(input_prompt5,text,jd)
         st.subheader("Coverletter")
         st.write(response)
 
