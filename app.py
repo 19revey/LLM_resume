@@ -4,7 +4,6 @@ import os
 import PyPDF2 as pdf
 from dotenv import load_dotenv
 import json
-from datetime import datetime
 
 load_dotenv()
 
@@ -29,10 +28,9 @@ def input_pdf_text(uploaded_file):
 
 ## Streamlit App
 
-current_time = datetime.now().strftime("%H:%M:%S")
 
 st.title("Improve your resume using LLM")
-st.text(f"powered by Gemini pro, last updated {current_time}")
+st.text("powered by Gemini pro, last updated 2024-01-24 12:18")
 jd=st.text_area("Paste the Job Description")
 uploaded_file=st.file_uploader("Upload Your Resume",type="pdf",help="Please uplaod the pdf")
 
