@@ -34,7 +34,7 @@ st.text("powered by Gemini pro, last updated on 2024-01-24")
 
 st.text("Enhance your resume by including the skills mentioned \n in the job description that are missing from your resume.")
 
-jd=st.text_area("Paste the Job Description")
+jd="job description: "+ st.text_area("Paste the Job Description")
 uploaded_file=st.file_uploader("Upload Your Resume",type="pdf",help="Please uplaod the pdf")
 
 
@@ -54,7 +54,7 @@ Show  a single percentage reflecting the overall match between resume and job de
 input_prompt2 = """
 You are an skilled Applicant Tracking System scanner with a deep understanding of Applicant Tracking System functionality, 
 your task is to evaluate the resume against the provided job description. 
-Find out the skills the make this resume qualified for this job, the shown skills  should exist in the job description.
+Find out the skills the make this resume qualified for this job.
 """
 
 # input_prompt3 = """
@@ -66,7 +66,7 @@ Find out the skills the make this resume qualified for this job, the shown skill
 input_prompt4 = """
 You are an skilled Applicant Tracking System scanner with a deep understanding of Applicant Tracking System functionality, 
 your task is to evaluate the resume against the provided job description. 
-You must list most critical keywords in the job description that miss in the resume.
+Find out the skills the make this resume disqualified for this job.
 """
 
 #give me the percentage of match if the resume matches the job description.  First the output should come as percentage and then highlight keywords in the job description that miss in the resume.
@@ -81,14 +81,14 @@ The third paragraph discuss the your interest in this role and thanks for the co
 
 if submit:
     if uploaded_file is not None:
-        text=input_pdf_text(uploaded_file)
+        text="resume: "+ input_pdf_text(uploaded_file)
 
         response=get_gemini_response(input_prompt1,text,jd)
         st.subheader("percentage match")
         st.write(response)
 
         response=get_gemini_response(input_prompt2,text,jd)
-        st.subheader("skills needed")
+        st.subheader("Qualifications")
         st.write(response)
 
         # response=get_gemini_response(input_prompt3,text,jd)
