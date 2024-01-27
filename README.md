@@ -18,5 +18,9 @@ Build docker image and start container:
 docker compose up
 ```
 
-### This is also hosted on AWS
-http://34.234.95.99:8501/
+### This is hosted on both  AWS and streamlit
+
+http://54.226.187.124:8501/ 
+(AWS will charge for public IPs after February 2024, so this won't last long)
+or
+https://llmresume.streamlit.app/
