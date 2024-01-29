@@ -57,11 +57,11 @@ your task is to evaluate the resume against the provided job description.
 Find out the requirements the make this resume disqualified for this job in a list.
 """
 
-# input_prompt3 = """
-# You are an skilled Applicant Tracking System scanner with a deep understanding of Applicant Tracking System functionality, 
-# your task is to evaluate the resume against the provided job description. 
-# You must list keywords in the job description that are relevant to skills in the job description.
-# """
+input_prompt3 = """
+You are an skilled Applicant Tracking System scanner with a deep understanding of Applicant Tracking System functionality, 
+your task is to evaluate the resume against the provided job description. 
+Find out the most critical keywords in the resume that the make this resume qualified for this job in a list.
+"""
 
 input_prompt4 = """
 You are submitting a resume to a job with the provided job description. 
@@ -86,13 +86,16 @@ if submit:
         st.subheader("Percentage of match")
         st.write(response)
 
-        response=get_gemini_response(input_prompt2,text,jd)
-        st.subheader("Mismatch items")
+
+        response=get_gemini_response(input_prompt3,text,jd)
+        st.subheader("Qualifications to highlight")
         st.write(response)
 
-        # response=get_gemini_response(input_prompt3,text,jd)
-        # st.subheader("Skills should be highlighted")
-        # st.write(response)
+        response=get_gemini_response(input_prompt2,text,jd)
+        st.subheader("Disqualifications")
+        st.write(response)
+
+
 
         response=get_gemini_response(input_prompt4,text,jd)
         st.subheader("Skills you may want to add")
