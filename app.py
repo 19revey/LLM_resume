@@ -30,7 +30,7 @@ def input_pdf_text(uploaded_file):
 
 
 st.title("Improve your resume using LLM")
-st.text("powered by Gemini pro, last updated on 2024-01-24")
+st.text("powered by Gemini pro, last updated on 2024-01-28")
 
 st.text("Enhance your resume by including the skills mentioned \n in the job description that are missing from your resume.")
 
@@ -54,7 +54,7 @@ Show  a single percentage reflecting the overall match between resume and job de
 input_prompt2 = """
 You are an skilled Applicant Tracking System scanner with a deep understanding of Applicant Tracking System functionality, 
 your task is to evaluate the resume against the provided job description. 
-Find out the skills the make this resume qualified for this job.
+Find out the requirements the make this resume disqualified for this job in a list.
 """
 
 # input_prompt3 = """
@@ -64,9 +64,8 @@ Find out the skills the make this resume qualified for this job.
 # """
 
 input_prompt4 = """
-You are an skilled Applicant Tracking System scanner with a deep understanding of Applicant Tracking System functionality, 
-your task is to evaluate the resume against the provided job description. 
-Find out the skills the make this resume disqualified for this job.
+You are submitting a resume to a job with the provided job description. 
+Find out the requirements in the job description you should add to make you qualify for this job.
 """
 
 #give me the percentage of match if the resume matches the job description.  First the output should come as percentage and then highlight keywords in the job description that miss in the resume.
@@ -84,11 +83,11 @@ if submit:
         text="resume: "+ input_pdf_text(uploaded_file)
 
         response=get_gemini_response(input_prompt1,text,jd)
-        st.subheader("percentage match")
+        st.subheader("Percentage of match")
         st.write(response)
 
         response=get_gemini_response(input_prompt2,text,jd)
-        st.subheader("Qualifications")
+        st.subheader("Mismatch items")
         st.write(response)
 
         # response=get_gemini_response(input_prompt3,text,jd)
@@ -96,7 +95,7 @@ if submit:
         # st.write(response)
 
         response=get_gemini_response(input_prompt4,text,jd)
-        st.subheader("Missing Keywords")
+        st.subheader("Skills you may want to add")
         st.write(response)
     
         response=get_gemini_response(input_prompt5,text,jd)
