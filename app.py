@@ -60,7 +60,7 @@ Find out the requirements the make this resume disqualified for this job in a li
 input_prompt3 = """
 You are an skilled Applicant Tracking System scanner with a deep understanding of Applicant Tracking System functionality, 
 your task is to evaluate the resume against the provided job description. 
-Find out the most critical keywords in the resume that the make this resume qualified for this job in a list.
+Find out the most critical keywords in the resume that match the job description in a list.
 """
 
 input_prompt4 = """
