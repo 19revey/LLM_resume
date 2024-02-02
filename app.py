@@ -106,7 +106,7 @@ if submit:
         st.write(response)
 
     else:
-        st.write("Please uplaod the resume")
+        st.write("Please upload the resume")
 
 
    
