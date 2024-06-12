@@ -1,3 +1,11 @@
+### This is hosted on both  ~~AWS~~ and streamlit
+
+~~http://54.226.187.124:8501/~~ 
+(AWS will charge for public IPs after February 2024, so this won't last long)
+or
+https://llmresume.streamlit.app/
+
+
 # Improve your resume using LLM
 
 Powered by Google Gemini Pro
@@ -18,9 +26,3 @@ Build docker image and start container:
 docker compose up
 ```
 
-### This is hosted on both  AWS and streamlit
-
-http://54.226.187.124:8501/ 
-(AWS will charge for public IPs after February 2024, so this won't last long)
-or
-https://llmresume.streamlit.app/
